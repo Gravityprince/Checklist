@@ -23,7 +23,7 @@ class ChecklistViewController: UITableViewController {
   // The tableView object from the tableViewController (added to the storyboard) calls these functions.
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     print("Running tableView(numberOfRowsInSection)")
-    return 5
+    return 100
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -32,15 +32,15 @@ class ChecklistViewController: UITableViewController {
   
   let label = cell.viewWithTag(1000) as! UILabel
   
-  if indexPath.row == 0 {
+  if indexPath.row % 5 == 0 {
     label.text = "Walk the dog"
-  } else if indexPath.row == 1 {
+  } else if indexPath.row % 5 == 1 {
     label.text = "Brush my teeth"
-  } else if indexPath.row == 2 {
+  } else if indexPath.row % 5 == 2 {
     label.text = "Learn iOS development"
-  } else if indexPath.row == 3 {
+  } else if indexPath.row % 5 == 3 {
     label.text = "Soccor practice"
-  } else if indexPath.row == 4 {
+  } else if indexPath.row % 5 == 4 {
     label.text = "Eat ice cream"
   }
   return cell
