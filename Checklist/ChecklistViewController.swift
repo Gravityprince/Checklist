@@ -27,7 +27,7 @@ class ChecklistViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    print("Running tableView(cellForRowAtIndex)")
+    print("Running tableView(cellForRowAtIndex) for row: \(indexPath.row)")
     let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
   
   let label = cell.viewWithTag(1000) as! UILabel
