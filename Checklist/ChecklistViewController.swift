@@ -29,7 +29,7 @@ class ChecklistViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     print("Running tableView(cellForRowAtIndex) for row: \(indexPath.row)")
     let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
-  
+      
   let label = cell.viewWithTag(1000) as! UILabel
   
   if indexPath.row % 5 == 0 {
@@ -44,6 +44,18 @@ class ChecklistViewController: UITableViewController {
     label.text = "Eat ice cream"
   }
   return cell
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if let cell = tableView.cellForRow(at: indexPath) {
+      if cell.accessoryType == .none {
+        cell.accessoryType = .checkmark
+      } else {
+        cell.accessoryType = .none
+      }
+    }
+    
+    tableView.deselectRow(at: indexPath, animated: true)
   }
 
 }
