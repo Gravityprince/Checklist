@@ -9,11 +9,9 @@
 import UIKit
 
 class ChecklistViewController: UITableViewController {
-  var row0item: ChecklistItem
-  var row1item: ChecklistItem
-  var row2item: ChecklistItem
-  var row3item: ChecklistItem
-  var row4item: ChecklistItem
+  
+  var items: [ChecklistItem]
+
   
   required init?(coder aDecoder: NSCoder){
     row0item = ChecklistItem()
