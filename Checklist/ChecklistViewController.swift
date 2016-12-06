@@ -12,6 +12,21 @@ class ChecklistViewController: UITableViewController {
   
   var items: [ChecklistItem]
   
+  @IBAction func addItem() {
+    let newRowIndex = items.count
+    
+    let item = ChecklistItem()
+    item.text = "I am a new row"
+    item.checked = true
+    items.append(item)
+    
+    //Tell the tableView we have a new row and it must be passed in as
+    // an array. So, we make a singleton array.
+    let indexPath = IndexPath(row: newRowIndex, section: 0)
+    let indexPaths = [indexPath]
+    tableView.insertRows(at: indexPaths, with: .automatic)
+  }
+  
   required init?(coder aDecoder: NSCoder){
     items = [ChecklistItem]()
     
