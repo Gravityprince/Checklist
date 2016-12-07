@@ -101,7 +101,7 @@ class ChecklistViewController: UITableViewController {
                           forRowAt indexPath: IndexPath){
     items.remove(at: indexPath.row)
     let indexPaths = [indexPath]
-    tableView.deleteRows(at: indexPaths.row, with: .automatic)
+    tableView.deleteRows(at: indexPaths, with: .automatic)
   }
   
   func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
