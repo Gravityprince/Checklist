@@ -9,6 +9,15 @@
 import Foundation
 import UIKit
 
+// This defines the AddItemViewControllerDelegate protocol. Note
+// functions with out code.
+protocol AddItemViewControllerDelegate: class {
+  func addItemViewControllerDidCancel(_ controller: AddItemViewController)
+  func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem)
+}
+
+
+
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
   
   @IBAction func cancel(){
