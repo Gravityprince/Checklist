@@ -12,21 +12,6 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
   
   var items: [ChecklistItem]
   
-  @IBAction func addItem() {
-    let newRowIndex = items.count
-    
-    let item = ChecklistItem()
-    item.text = "I am a new row"
-    item.checked = true
-    items.append(item)
-    
-    //Tell the tableView we have a new row and it must be passed in as
-    // an array. So, we make a singleton array.
-    let indexPath = IndexPath(row: newRowIndex, section: 0)
-    let indexPaths = [indexPath]
-    tableView.insertRows(at: indexPaths, with: .automatic)
-  }
-  
   required init?(coder aDecoder: NSCoder){
     items = [ChecklistItem]()
     
@@ -122,10 +107,20 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     dismiss(animated: true, completion: nil)
   }
   
-  func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem) {
+  func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem){
+    let newRowIndex = items.count
+    items.append(item)
+    
+    //Tell the tableView we have a new row. It must be passed in as
+    // an array. So, we make an array with one item.
+    let indexPath = IndexPath(row: newRowIndex, section: 0)
+    let indexPaths = [indexPath]
+    tableView.insertRows(at: indexPaths, with: .automatic)
+    
     dismiss(animated: true, completion: nil)
   }
   
+  // Gotta tell the View we are going to segue to who we are and that we're the delegate.
   override func prepare(for segue: UIStoryboardSegue, sender: Any?){
     if segue.identifier == "AddItem"{
       let navigationController = segue.destination as! UINavigationController
