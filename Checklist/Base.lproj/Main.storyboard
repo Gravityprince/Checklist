@@ -44,7 +44,7 @@
                     <navigationItem key="navigationItem" title="Checklist" id="tX2-eg-DNG">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DuV-IV-CH5">
                             <connections>
-                                <segue destination="Pl0-d9-vC0" kind="presentation" id="DUW-Sw-liE"/>
+                                <segue destination="Pl0-d9-vC0" kind="presentation" identifier="AddItem" id="DUW-Sw-liE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

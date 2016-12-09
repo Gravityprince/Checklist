@@ -16,17 +16,19 @@ protocol AddItemViewControllerDelegate: class {
   func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem)
 }
 
-
-
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
-  
+  weak var delegate: AddItemViewControllerDelegate?
+
   @IBAction func cancel(){
-    dismiss(animated: true, completion: nil)
+    delegate?.addItemViewControllerDidCancel(self)
   }
   
   @IBAction func done() {
-    print("Contents of the text field: \(textField.text!)")
-    dismiss(animated: true, completion: nil)
+    let item = ChecklistItem()
+    item.text = textField.text!
+    item.checked = false
+    
+    delegate?.addItemViewController(self, didFinishAdding: item)
   }
   
   @IBOutlet weak var textField: UITextField!
