@@ -17,8 +17,14 @@ protocol AddItemViewControllerDelegate: class {
 }
 
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
+  
+  // The "delegate" variable is set by the calling controller, a AddItemViewControllerDelegate
+  // and then used throughout the code here. This is the connection back (through the portal)
   weak var delegate: AddItemViewControllerDelegate?
-
+  
+  // A place to recieve the incoming ChecklistItem to edit.
+  var itemToEdit: ChecklistItem?
+  
   @IBAction func cancel(){
     delegate?.addItemViewControllerDidCancel(self)
   }
@@ -43,6 +49,16 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    if let item = itemToEdit {
+      title = "Edit Item"
+      textField.text = item.text
+      doneBarButton.isEnabled = true
+    }
   }
   
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,

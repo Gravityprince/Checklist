@@ -128,6 +128,15 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
       let navigationController = segue.destination as! UINavigationController
       let controller = navigationController.topViewController as! AddItemViewController
       controller.delegate = self
+    } else if segue.identifier == "EditItem" {
+      let navigationController = segue.destination as! UINavigationController
+      let controller = navigationController.topViewController as! AddItemViewController
+      controller.delegate = self
+      
+      // We need the row number in oder to send it to the editItem
+      if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+        controller.itemToEdit = items[indexPath.row]
+      }
     }
   }
 
