@@ -14,6 +14,7 @@ import UIKit
 protocol AddItemViewControllerDelegate: class {
   func addItemViewControllerDidCancel(_ controller: AddItemViewController)
   func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklistItem)
+  func addItemViewController(_ controller: AddItemViewController, didFinishEditing item: ChecklistItem)
 }
 
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
@@ -30,11 +31,16 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
   }
   
   @IBAction func done() {
-    let item = ChecklistItem()
-    item.text = textField.text!
-    item.checked = false
-    
-    delegate?.addItemViewController(self, didFinishAdding: item)
+    if let item = itemToEdit {
+      item.text = textField.text!
+      delegate?.addItemViewController(self, didFinishEditing: item)
+    } else {
+      let item = ChecklistItem()
+      item.text = textField.text!
+      item.checked = false
+      delegate?.addItemViewController(self, didFinishAdding: item)
+    }
+
   }
   
   @IBOutlet weak var textField: UITextField!
@@ -55,7 +61,7 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     super.viewDidLoad()
     
     if let item = itemToEdit {
-      title = "Edit Item"
+      title = "Edit Item"  // "title" is a builtin.
       textField.text = item.text
       doneBarButton.isEnabled = true
     }

@@ -122,6 +122,16 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     dismiss(animated: true, completion: nil)
   }
   
+  func addItemViewController(_ controller: AddItemViewController, didFinishEditing item: ChecklistItem){
+    if let index = items.index(of: item) {
+      let indexPath = IndexPath(row: index, section: 0)
+      if let cell = tableView.cellForRow(at: indexPath) {
+        configureText(for: cell, with: item)
+      }
+    }
+    dismiss(animated: true, completion: nil)
+  }
+  
   // Gotta tell the View we are going to segue to who we are and that we're the delegate.
   override func prepare(for segue: UIStoryboardSegue, sender: Any?){
     if segue.identifier == "AddItem"{
