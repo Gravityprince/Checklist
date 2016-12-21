@@ -47,6 +47,8 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
 
     
     super.init(coder: aDecoder)
+    print("The Documents folder is \(documentsDirectory())")
+    print("Data file path is \(dataFilePath())")
   }
 
   override func viewDidLoad() {
@@ -57,6 +59,16 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  func documentsDirectory() -> URL {
+    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    print(paths[0])
+    return paths[0]
+  }
+  
+  func dataFilePath() -> URL {
+    return documentsDirectory().appendingPathComponent("Checklist.plist")
   }
   
   // The tableView object from the tableViewController (added to the storyboard) calls these functions.
