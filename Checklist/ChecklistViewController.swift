@@ -71,6 +71,14 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     return documentsDirectory().appendingPathComponent("Checklist.plist")
   }
   
+  func saveChecklistItem() {
+    let data = NSMutableData()
+    let archiver = NSKeyedArchiver(forWritingWith: data)
+    archiver.encode(items, forKey: "ChecklistItem")
+    archiver.finishEncoding()
+    data.write(to: dataFilePath(), atomically: true)
+  }
+  
   // The tableView object from the tableViewController (added to the storyboard) calls these functions.
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return items.count
@@ -91,7 +99,9 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
       item.toggleChecked()
       configureCheckmark(for: cell, with: item)
     }
-      tableView.deselectRow(at: indexPath, animated: true)
+    tableView.deselectRow(at: indexPath, animated: true)
+    saveChecklistItem()
+    
   }
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
@@ -99,6 +109,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     items.remove(at: indexPath.row)
     let indexPaths = [indexPath]
     tableView.deleteRows(at: indexPaths, with: .automatic)
+    saveChecklistItem()
   }
   
   func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
@@ -132,6 +143,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     tableView.insertRows(at: indexPaths, with: .automatic)
     
     dismiss(animated: true, completion: nil)
+    saveChecklistItem()
   }
   
   func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem){
@@ -142,6 +154,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
       }
     }
     dismiss(animated: true, completion: nil)
+    saveChecklistItem()
   }
   
   // Gotta tell the View we are going to segue to who we are and that we're the delegate.
