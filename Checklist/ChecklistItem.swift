@@ -19,8 +19,10 @@ class ChecklistItem: NSObject, NSCoding {
   override init() {
     super.init()
   }
-  
+  // It's init? because there may not be enough info to decode an object.
   required init?(coder aDecoder: NSCoder){
+    text = aDecoder.decodeObject(forKey: "Text") as! String
+    checked = aDecoder.decodeBool(forKey: "Checked")
     super.init()
   }
   
