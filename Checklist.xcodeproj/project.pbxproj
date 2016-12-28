@@ -61,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				8E3B9C271DEE297300BD7D51 /* AppDelegate.swift */,
+				8E98F5E21E14552800281200 /* AllListsViewController.swift */,
 				8E3746141DF4C0E200A8AA9A /* ChecklistItem.swift */,
 				8E3B9C291DEE297300BD7D51 /* ChecklistViewController.swift */,
 				8E3746161DF779E800A8AA9A /* ItemDetailViewController.swift */,
@@ -68,7 +69,6 @@
 				8E3B9C2E1DEE297300BD7D51 /* Assets.xcassets */,
 				8E3B9C301DEE297300BD7D51 /* LaunchScreen.storyboard */,
 				8E3B9C331DEE297300BD7D51 /* Info.plist */,
-				8E98F5E21E14552800281200 /* AllListsViewController.swift */,
 			);
 			path = Checklist;
 			sourceTree = "<group>";
