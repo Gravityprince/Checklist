@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JdP-rJ-lqm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JdP-rJ-lqm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Checklist-->
+        <!--Name of the Checklist-->
         <scene sceneID="lBd-qa-lTq">
             <objects>
                 <tableViewController id="eUn-3j-GZ7" customClass="ChecklistViewController" customModule="Checklist" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kk9-RF-oOd" id="VR2-pd-tIL">
-                                    <rect key="frame" x="0.0" y="0.0" width="308" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="308" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Er-hT-VNQ">
@@ -54,7 +54,7 @@ FhY
                             <outlet property="delegate" destination="eUn-3j-GZ7" id="5Tt-76-Jyj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Checklist" id="tX2-eg-DNG">
+                    <navigationItem key="navigationItem" title="Name of the Checklist" id="tX2-eg-DNG">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DuV-IV-CH5">
                             <connections>
                                 <segue destination="Pl0-d9-vC0" kind="presentation" identifier="AddItem" id="DUW-Sw-liE"/>
@@ -81,7 +81,7 @@ FhY
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kcN-d4-gk6" id="xZm-oV-meI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the Item" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUM-ky-R1U">
@@ -127,6 +127,28 @@ FhY
             </objects>
             <point key="canvasLocation" x="2600.8000000000002" y="78.710644677661179"/>
         </scene>
+        <!--Checklists-->
+        <scene sceneID="RfE-Wz-lIk">
+            <objects>
+                <tableViewController id="XRV-Pw-atM" customClass="AllListsViewController" customModule="Checklist" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="9xE-lY-3L2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="XRV-Pw-atM" id="rm5-ty-Nk7"/>
+                            <outlet property="delegate" destination="XRV-Pw-atM" id="EQo-cE-l2r"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Checklists" id="MyW-hZ-Vpc"/>
+                    <connections>
+                        <segue destination="eUn-3j-GZ7" kind="show" identifier="ShowChecklist" id="H6S-r3-iqa"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xLB-au-Bts" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="194" y="79"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="KAX-hb-8dB">
             <objects>
@@ -138,12 +160,12 @@ FhY
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="eUn-3j-GZ7" kind="relationship" relationship="rootViewController" id="CDj-zp-ruJ"/>
+                        <segue destination="XRV-Pw-atM" kind="relationship" relationship="rootViewController" id="TeL-zw-1O4"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xEl-kf-aec" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="61.600000000000001" y="80.50974512743629"/>
+            <point key="canvasLocation" x="-607" y="79"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wi4-pz-drG">
