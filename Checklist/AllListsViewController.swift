@@ -83,11 +83,11 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     }
   }
   // ListDetailViewControllerDidCancel protocol methods
-  func ListDetailViewControllerDidCancel(_ controller: ListDetailViewController) {
+  func listDetailViewControllerDidCancel(_ controller: ListDetailViewController) {
     dismiss(animated: true, completion: nil)
   }
   
-  func ListDetailViewController(_ controller: ListDetailViewController, didFinishAdding checklist: Checklist){
+  func listDetailViewController(_ controller: ListDetailViewController, didFinishAdding checklist: Checklist){
     let newRowIndex = lists.count
     lists.append(checklist)
     
@@ -100,7 +100,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     dismiss(animated: true, completion: nil)
   }
   
-  func ListDetailViewController(_ controller: ListDetailViewController, didFinishEditing checklist: Checklist){
+  func listDetailViewController(_ controller: ListDetailViewController, didFinishEditing checklist: Checklist){
     if let index = lists.index(of: checklist) {
       let indexPath = IndexPath(row: index, section: 0)
       if let cell = tableView.cellForRow(at: indexPath) {
