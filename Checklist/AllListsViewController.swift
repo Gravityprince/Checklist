@@ -75,11 +75,14 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     if segue.identifier == "ShowChecklist" {
       let controller = segue.destination as! ChecklistViewController
       controller.checklist = sender as! Checklist
+      print("-- sending over \(controller.checklist.name)")
     } else if segue.identifier == "AddChecklist" {
+      print("-- Adding a new checklist")
       let navigationController = segue.destination as! UINavigationController
       let controller = navigationController.topViewController as! ListDetailViewController
       controller.delegate = self
       controller.checklistToEdit = nil
+      
     }
   }
   // ListDetailViewControllerDidCancel protocol methods
@@ -108,6 +111,17 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
       }
     }
     dismiss(animated: true, completion: nil)
+  }
+  
+  // Instead of a segue, we load the view controller by hand from the Storyboard.
+  override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    print("--Running tableView:accessoryButtonTappedForRowWith")
+    let navigationController = storyboard!.instantiateViewController(withIdentifier: "ListDetailNavigationController") as! UINavigationController
+    let controller = navigationController.topViewController as! ListDetailViewController
+    controller.delegate = self
+    let checklist = lists[indexPath.row]
+    controller.checklistToEdit = checklist
+    present(navigationController, animated: true, completion: nil)
   }
 
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
