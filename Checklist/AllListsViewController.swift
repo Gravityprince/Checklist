@@ -14,7 +14,6 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
   
   required init?(coder aDecoder: NSCoder) {
     lists = [Checklist]()
-    
     super.init(coder: aDecoder)
     
     var list = Checklist(name: "Birthdays")
@@ -23,8 +22,14 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     lists.append(list)
     list = Checklist(name: "Cool Apps")
     lists.append(list)
-    list = Checklist(name: "To Do")
+    list = Checklist(name: "To-Do")
     lists.append(list)
+    
+    for list in lists {
+      let item = ChecklistItem()
+      item.text = "Item for \(list.name)"
+      list.items.append(item)
+    }
   }
 
     override func viewDidLoad() {
@@ -75,7 +80,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     if segue.identifier == "ShowChecklist" {
       let controller = segue.destination as! ChecklistViewController
       controller.checklist = sender as! Checklist
-      print("-- sending over \(controller.checklist.name)")
+      print("-- Segueing with \(controller.checklist.name)")
     } else if segue.identifier == "AddChecklist" {
       print("-- Adding a new checklist")
       let navigationController = segue.destination as! UINavigationController

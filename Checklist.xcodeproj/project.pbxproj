@@ -14,6 +14,7 @@
 		8E3B9C2D1DEE297300BD7D51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E3B9C2B1DEE297300BD7D51 /* Main.storyboard */; };
 		8E3B9C2F1DEE297300BD7D51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E3B9C2E1DEE297300BD7D51 /* Assets.xcassets */; };
 		8E3B9C321DEE297300BD7D51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E3B9C301DEE297300BD7D51 /* LaunchScreen.storyboard */; };
+		8E4BC8AA1E37F0F4003B65E9 /* scratch in Resources */ = {isa = PBXBuildFile; fileRef = 8E4BC8A91E37F0F4003B65E9 /* scratch */; };
 		8E98F5E31E14552800281200 /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98F5E21E14552800281200 /* AllListsViewController.swift */; };
 		8E98F5E51E1468DA00281200 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98F5E41E1468DA00281200 /* Checklist.swift */; };
 		8E98F5E71E1E8B6C00281200 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98F5E61E1E8B6C00281200 /* ListDetailViewController.swift */; };
@@ -29,6 +30,7 @@
 		8E3B9C2E1DEE297300BD7D51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E3B9C311DEE297300BD7D51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E3B9C331DEE297300BD7D51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E4BC8A91E37F0F4003B65E9 /* scratch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scratch; sourceTree = "<group>"; };
 		8E98F5E21E14552800281200 /* AllListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListsViewController.swift; sourceTree = "<group>"; };
 		8E98F5E41E1468DA00281200 /* Checklist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
 		8E98F5E61E1E8B6C00281200 /* ListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 		8E3B9C1B1DEE297300BD7D51 = {
 			isa = PBXGroup;
 			children = (
+				8E4BC8A61E37F04C003B65E9 /* temp */,
 				8E3B9C261DEE297300BD7D51 /* Checklist */,
 				8E3B9C251DEE297300BD7D51 /* Products */,
 			);
@@ -77,6 +80,14 @@
 				8E3B9C331DEE297300BD7D51 /* Info.plist */,
 			);
 			path = Checklist;
+			sourceTree = "<group>";
+		};
+		8E4BC8A61E37F04C003B65E9 /* temp */ = {
+			isa = PBXGroup;
+			children = (
+				8E4BC8A91E37F0F4003B65E9 /* scratch */,
+			);
+			name = temp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +153,7 @@
 				8E3B9C321DEE297300BD7D51 /* LaunchScreen.storyboard in Resources */,
 				8E3B9C2F1DEE297300BD7D51 /* Assets.xcassets in Resources */,
 				8E3B9C2D1DEE297300BD7D51 /* Main.storyboard in Resources */,
+				8E4BC8AA1E37F0F4003B65E9 /* scratch in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
