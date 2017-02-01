@@ -8,14 +8,40 @@
 
 import UIKit
 
-class AllListsViewController: UITableViewController, ListDetailViewControllerDelegate {
-  
+class AllListsViewController: UITableViewController,
+      ListDetailViewControllerDelegate, UINavigationControllerDelegate {
+
   var dataModel: DataModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+  
+  // navigationController(willShow gets called before viewDidAppear
+  func navigationController(_ navigationController: UINavigationController,
+                            willShow viewController: UIViewController,
+                            animated: Bool) {
+    // Was the back button tapped?
+    print("-- running navigationController(willShow)")
+    if viewController === self {
+      UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
+    }
+  }
+  
+  override func viewDidAppear(_ animated: Bool){
+    super.viewDidAppear(animated)
+    print("-- Running viewDidAppear")
+    // Tell the navigation controller, I'm the delegate
+    navigationController?.delegate = self
+    
+    let index = UserDefaults.standard.integer(forKey: "ChecklistIndex")
+    if index != -1 {
+      print("-- Looks like we were in a checklist before quiting...")
+      let checklist = dataModel.lists[index]
+      performSegue(withIdentifier: "ShowChecklist", sender: checklist)
+    }
+  }
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,6 +76,8 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //sender parameter
     print("-- Running AllListViewController.tableView:didSelectRowAt")
+    UserDefaults.standard.set(indexPath.row, forKey: "ChecklistIndex")
+    print("-- Storing indexPath.row: \(indexPath.row) in UserDefaults")
     let checklist = dataModel.lists[indexPath.row]
     performSegue(withIdentifier: "ShowChecklist", sender: checklist)
   }
@@ -115,5 +143,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     let indexPaths = [indexPath]
     tableView.deleteRows(at: indexPaths, with: .automatic)
   }
-  
+
+
+
 }
