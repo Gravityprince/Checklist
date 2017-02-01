@@ -14,13 +14,28 @@ class DataModel {
   init() {
     loadChecklists()
     registerDefaults()
+    handleFirstTime()
   }
   
   // After a fresh install, UserDefaults will be 0 because it can't find a value.
   // That will crash the app. Lets setup a default value.
   func registerDefaults() {
-    let dictionary: [String: Any] = ["ChecklistIndex": -1 ]
+    let dictionary: [String: Any] = ["ChecklistIndex": -1, "FirstTime": true ]
     UserDefaults.standard.register(defaults: dictionary)
+  }
+  
+  func handleFirstTime() {
+    let userDefaults = UserDefaults.standard
+    let firstTime = userDefaults.bool(forKey: "FirstTime")
+    
+    if firstTime {
+      let checklist = Checklist(name: "List")
+      lists.append(checklist)
+      indexOfSelectedChecklist = 0
+      userDefaults.set(false, forKey: "FirstTime")
+      userDefaults.synchronize()
+    }
+    
   }
   
   var indexOfSelectedChecklist: Int {
