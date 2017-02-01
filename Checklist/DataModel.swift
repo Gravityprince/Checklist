@@ -13,6 +13,14 @@ class DataModel {
   
   init() {
     loadChecklists()
+    registerDefaults()
+  }
+  
+  // After a fresh install, UserDefaults will be 0 because it can't find a value.
+  // That will crash the app. Lets setup a default value.
+  func registerDefaults() {
+    let dictionary: [String: Any] = ["ChecklistIndex": -1 ]
+    UserDefaults.standard.register(defaults: dictionary)
   }
   
   func documentsDirectory() -> URL {
