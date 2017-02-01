@@ -24,7 +24,8 @@ class AllListsViewController: UITableViewController,
     // Was the back button tapped?
     print("-- running navigationController(willShow)")
     if viewController === self {
-      UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
+      dataModel.indexOfSelectedChecklist = -1
+      print("-- dataModel.indexOfSelectedChecklist is now set to \(dataModel.indexOfSelectedChecklist)")
     }
   }
   
@@ -34,7 +35,7 @@ class AllListsViewController: UITableViewController,
     // Tell the navigation controller, I'm the delegate
     navigationController?.delegate = self
     
-    let index = UserDefaults.standard.integer(forKey: "ChecklistIndex")
+    let index = dataModel.indexOfSelectedChecklist
     if index != -1 {
       print("-- Looks like we were in a checklist before quiting...")
       let checklist = dataModel.lists[index]
@@ -76,7 +77,7 @@ class AllListsViewController: UITableViewController,
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //sender parameter
     print("-- Running AllListViewController.tableView:didSelectRowAt")
-    UserDefaults.standard.set(indexPath.row, forKey: "ChecklistIndex")
+    dataModel.indexOfSelectedChecklist = indexPath.row
     print("-- Storing indexPath.row: \(indexPath.row) in UserDefaults")
     let checklist = dataModel.lists[indexPath.row]
     performSegue(withIdentifier: "ShowChecklist", sender: checklist)

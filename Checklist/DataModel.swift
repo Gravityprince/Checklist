@@ -23,6 +23,15 @@ class DataModel {
     UserDefaults.standard.register(defaults: dictionary)
   }
   
+  var indexOfSelectedChecklist: Int {
+    get {
+      return UserDefaults.standard.integer(forKey: "ChecklistIndex")
+    }
+    set {
+      UserDefaults.standard.set(newValue, forKey: "ChecklistIndex")
+    }
+  }
+  
   func documentsDirectory() -> URL {
     let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
     print("-- The Document directory is \(paths)")
@@ -40,7 +49,7 @@ class DataModel {
       let unarchiver = NSKeyedUnarchiver(forReadingWith: data)
       lists = unarchiver.decodeObject(forKey: "Checklists") as! [Checklist]
       unarchiver.finishDecoding()
-      print("-- The Checklist array now has \(lists.count) items.")
+      print("-- Read \(lists.count) items from storage and added them to the lists array.")
     }
   }
   
