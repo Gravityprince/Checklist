@@ -68,15 +68,20 @@ class AllListsViewController: UITableViewController,
       let checklist = dataModel.lists[indexPath.row]
       cell.textLabel!.text = checklist.name
       cell.accessoryType = .detailDisclosureButton
+      
+      let totalItems = checklist.items.count
       let remainingItems = checklist.countUncheckedItems()
-        if remainingItems == 0 {
-        cell.detailTextLabel!.text = "Done!"
+      
+    if totalItems == 0 {
+          cell.detailTextLabel!.text = "(No Items)"
+      } else if remainingItems == 0 {
+          cell.detailTextLabel!.text = "Done!"
       } else {
-        cell.detailTextLabel!.text = "\(checklist.countUncheckedItems()) Remaining"
+          cell.detailTextLabel!.text = "\(checklist.countUncheckedItems()) Remaining"
       }
       return cell
-    }
-  
+  }
+
   // Separate the cell generation code away from tabelView(cellForRowAt). Keeps it simple cleaner.
   func makeCell(for tableView: UITableView) -> UITableViewCell {
     let cellIdentifier = "Cell"
