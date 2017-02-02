@@ -68,7 +68,14 @@ class DataModel {
       lists = unarchiver.decodeObject(forKey: "Checklists") as! [Checklist]
       unarchiver.finishDecoding()
       print("-- Read \(lists.count) items from storage and added them to the lists array.")
+      sortChecklists()
     }
+  }
+  
+  func sortChecklists(){
+    print("-- Sorting the checklist...")
+    lists.sort(by: { checklist1, checklist2 in
+      return checklist1.name.localizedStandardCompare(checklist2.name) == .orderedAscending })
   }
   
   func saveChecklists() {
