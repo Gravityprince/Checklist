@@ -16,7 +16,7 @@ class AllListsViewController: UITableViewController,
   
   override func viewWillAppear(_ animated: Bool){
     super.viewWillAppear(animated)
-    print("-- Running AllListViewController(viewWillAppear)")
+    print("-- Running AllListViewController(viewWillAppear) to reloadData()")
     // Added to reload the to-do count for each cell
     tableView.reloadData()
   }
@@ -68,7 +68,12 @@ class AllListsViewController: UITableViewController,
       let checklist = dataModel.lists[indexPath.row]
       cell.textLabel!.text = checklist.name
       cell.accessoryType = .detailDisclosureButton
-      cell.detailTextLabel!.text = "\(checklist.countUncheckedItems()) Remaining"
+      let remainingItems = checklist.countUncheckedItems()
+        if remainingItems == 0 {
+        cell.detailTextLabel!.text = "Done!"
+      } else {
+        cell.detailTextLabel!.text = "\(checklist.countUncheckedItems()) Remaining"
+      }
       return cell
     }
   
