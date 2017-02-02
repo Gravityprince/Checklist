@@ -12,10 +12,12 @@ class DataModel {
   var lists = [Checklist]()
   
   init() {
+    print("-- Running DataModel: init()")
     loadChecklists()
     registerDefaults()
     handleFirstTime()
   }
+  
   
   // After a fresh install, UserDefaults will be 0 because it can't find a value.
   // That will crash the app. Lets setup a default value.
@@ -29,6 +31,7 @@ class DataModel {
     let firstTime = userDefaults.bool(forKey: "FirstTime")
     
     if firstTime {
+      print("-- Running firstTime()")
       let checklist = Checklist(name: "List")
       lists.append(checklist)
       indexOfSelectedChecklist = 0

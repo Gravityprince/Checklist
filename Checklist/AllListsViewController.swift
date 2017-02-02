@@ -12,6 +12,14 @@ class AllListsViewController: UITableViewController,
       ListDetailViewControllerDelegate, UINavigationControllerDelegate {
 
   var dataModel: DataModel!
+  
+  
+  override func viewWillAppear(_ animated: Bool){
+    super.viewWillAppear(animated)
+    print("-- Running AllListViewController(viewWillAppear)")
+    // Added to reload the to-do count for each cell
+    tableView.reloadData()
+  }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +30,15 @@ class AllListsViewController: UITableViewController,
                             willShow viewController: UIViewController,
                             animated: Bool) {
     // Was the back button tapped?
-    print("-- running navigationController(willShow)")
+    print("-- running AllListViewController(willShow),")
     if viewController === self {
       dataModel.indexOfSelectedChecklist = -1
-      print("-- dataModel.indexOfSelectedChecklist is now set to \(dataModel.indexOfSelectedChecklist)")
+      print("-- ...and setting dataModel.indexOfSelectedChecklist to \(dataModel.indexOfSelectedChecklist)")
     }
   }
   
   override func viewDidAppear(_ animated: Bool){
     super.viewDidAppear(animated)
-    print("-- Running viewDidAppear")
     // Tell the navigation controller, I'm the delegate
     navigationController?.delegate = self
     
@@ -77,7 +84,6 @@ class AllListsViewController: UITableViewController,
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     //sender parameter
-    print("-- Running AllListViewController.tableView:didSelectRowAt")
     dataModel.indexOfSelectedChecklist = indexPath.row
     print("-- Storing indexPath.row: \(indexPath.row) in UserDefaults")
     let checklist = dataModel.lists[indexPath.row]
