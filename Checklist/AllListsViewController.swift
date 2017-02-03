@@ -19,6 +19,8 @@ class AllListsViewController: UITableViewController,
     print("-- Running AllListViewController(viewWillAppear) to reloadData()")
     // Added to reload the to-do count for each cell
     tableView.reloadData()
+    dataModel.saveChecklists()
+
   }
 
     override func viewDidLoad() {
@@ -33,7 +35,7 @@ class AllListsViewController: UITableViewController,
     print("-- running AllListViewController(willShow),")
     if viewController === self {
       dataModel.indexOfSelectedChecklist = -1
-      print("-- ...and setting dataModel.indexOfSelectedChecklist to \(dataModel.indexOfSelectedChecklist)")
+      print("-- ...setting dataModel.indexOfSelectedChecklist to \(dataModel.indexOfSelectedChecklist)")
     }
   }
   

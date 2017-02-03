@@ -49,7 +49,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
   
   // Delegate send "nil" back when the table view send willSelectRowAt to
   // disable the row selection and the row turning grey.
-  override func tableView(_ tableView: UITableView, willSelectRowAt indexPAth: IndexPath) -> IndexPath? {
+  override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
     return nil
   }
   
