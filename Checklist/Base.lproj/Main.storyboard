@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,14 +36,18 @@ FhY
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6o-o1-mv4">
-                                            <rect key="frame" x="34" y="8" width="274" height="27"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6o-o1-mv4">
+                                            <rect key="frame" x="38" y="11" width="270" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Z6o-o1-mv4" secondAttribute="trailing" id="Hcn-Ke-lwY"/>
+                                        <constraint firstItem="Z6o-o1-mv4" firstAttribute="leading" secondItem="VR2-pd-tIL" secondAttribute="leadingMargin" constant="30" id="P1S-l9-6w2"/>
+                                        <constraint firstItem="Z6o-o1-mv4" firstAttribute="centerY" secondItem="VR2-pd-tIL" secondAttribute="centerY" id="Z8N-e3-0Py"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="Pl0-d9-vC0" kind="presentation" identifier="EditItem" trigger="accessoryAction" id="sUu-gi-yjQ"/>
@@ -84,9 +89,8 @@ FhY
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the Item" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUM-ky-R1U">
-                                                    <rect key="frame" x="8" y="8" width="359" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the Item" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUM-ky-R1U">
+                                                    <rect key="frame" x="8" y="0.0" width="359" height="38"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -96,6 +100,12 @@ FhY
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cUM-ky-R1U" firstAttribute="top" secondItem="xZm-oV-meI" secondAttribute="top" id="2Wv-kf-DNs"/>
+                                                <constraint firstItem="cUM-ky-R1U" firstAttribute="leading" secondItem="xZm-oV-meI" secondAttribute="leading" constant="8" id="DVt-Ff-CGd"/>
+                                                <constraint firstAttribute="trailing" secondItem="cUM-ky-R1U" secondAttribute="trailing" constant="8" id="rvb-hb-uFl"/>
+                                                <constraint firstAttribute="bottom" secondItem="cUM-ky-R1U" secondAttribute="bottom" constant="5" id="zNS-Eu-geB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -125,7 +135,7 @@ FhY
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFX-Jf-dph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2600.8000000000002" y="78.710644677661179"/>
+            <point key="canvasLocation" x="2600.625" y="78.16901408450704"/>
         </scene>
         <!--Checklists-->
         <scene sceneID="RfE-Wz-lIk">
@@ -173,9 +183,8 @@ FhY
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the list" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kwc-8L-JOu">
-                                                    <rect key="frame" x="8" y="0.0" width="359" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the list" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kwc-8L-JOu">
+                                                    <rect key="frame" x="0.0" y="-3" width="375" height="49"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -185,6 +194,12 @@ FhY
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="kwc-8L-JOu" secondAttribute="bottom" constant="-3" id="84E-p7-XOm"/>
+                                                <constraint firstAttribute="trailing" secondItem="kwc-8L-JOu" secondAttribute="trailing" id="d6t-DS-S4a"/>
+                                                <constraint firstItem="kwc-8L-JOu" firstAttribute="top" secondItem="dZ0-ZL-snc" secondAttribute="top" constant="-3" id="r4L-gk-zg6"/>
+                                                <constraint firstItem="kwc-8L-JOu" firstAttribute="leading" secondItem="dZ0-ZL-snc" secondAttribute="leading" id="sP7-Wc-3rY"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -205,11 +220,18 @@ FhY
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JhW-xC-BSx">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JhW-xC-BSx">
                                                     <rect key="frame" x="298" y="3" width="36" height="36"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="1pA-CV-lHd"/>
+                                                        <constraint firstAttribute="width" constant="36" id="BYa-XY-cGo"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="JhW-xC-BSx" secondAttribute="trailing" constant="8" id="GwW-p8-tml"/>
+                                                <constraint firstItem="JhW-xC-BSx" firstAttribute="top" secondItem="vPi-pK-ibC" secondAttribute="top" constant="3" id="lCV-WU-jbE"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="Pul-kx-oqh" kind="show" identifier="PickIcon" id="bh0-dA-nN4"/>
@@ -245,7 +267,7 @@ FhY
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iki-pd-5As" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1000.8" y="823.53823088455783"/>
+            <point key="canvasLocation" x="999.375" y="822.88732394366195"/>
         </scene>
         <!--Choose Item-->
         <scene sceneID="zvi-Fs-Q76">
