@@ -32,6 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       }
     }
     
+    let content = UNMutableNotificationContent()
+    content.title = "Hello"
+    content.body = "I am local notification body text"
+    content.sound = UNNotificationSound.default()
+    
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+    let request = UNNotificationRequest(identifier: "MyNotification", content: content, trigger: trigger)
+    // Now we ask UNUserNotificationCenter to add the constructed alert.
+    center.add(request)
+    
     return true
   }
 
